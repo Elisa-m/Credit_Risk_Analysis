@@ -1,7 +1,7 @@
 # Credit_Risk_Analysis
 
 ## Purpose
-The purpose of this analysis was to evaluate the performance of supervised machine learining models in predicting credit card risk. 
+The purpose of this analysis was to evaluate the performance of supervised machine learining models in predicting credit risk to identify which accoutns should be given loans. 
 
 ## Results
 ### Model #1: RandomOverSampler
