@@ -6,19 +6,19 @@ The purpose of this analysis was to evaluate the performance of supervised machi
 ## Results
 ### Model #1: RandomOverSampler
 1. Balanced accuracy score: 0.6742571941946299
-2. Precision and recall scores: 
+2. Precision and recall scores:
 
 ![](ros.png)
 
 ### Model #2: SMOTE Oversampling
 1. Balanced accuracy score: 0.6623356588465208
-2. Precision and recall scores: 
+2. Precision and recall scores:
 
 ![](smote.png)
 
 ### Model #3: ClusterCentroids Undersampling
 1. Balanced accuracy score: 0.544392082449592
-2. Precision and recall scores: 
+2. Precision and recall scores:
 
 ![](cc.png)
 
@@ -30,40 +30,17 @@ The purpose of this analysis was to evaluate the performance of supervised machi
 
 ### Model #5: Balanced Random Forest Classifier
 1. Balanced accuracy score: 0.7885466545953005
-2. Precision and recall scores: 
+2. Precision and recall scores:
 
 ![](brf.png)
 
 ### Model #6: Easy Ensemble AdaBoost Classifier
 1. Balanced accuracy score: 0.9316600714093861
-2. Precision and recall scores: 
+2. Precision and recall scores:
 
 ![](ecc.png)
 
 ## Summary
-Balanced accuracy, precision and recall scores can be analyzed as follows: 
-1. Accuracy
-2. All precision scores for high risk creditors are low which means that there's a large number of false positives. On the other hand, all precision scores for low risk creditors are equal to 1 which means that there are no false positives. In other words, most creditors that are classified as high risk creditors are not high risk creditors, and all creditors that are classified as low risk creditors are in fact low risk creditors. 
-3. 
+All low credit risk precision scores are 1 which means that all models are 100% reliable at predicting low credit risk. In other words, there's a 100% chance that all accounts classified as low credit risk have low credit risk. However, all precision scores for high credit risk are low which means that most accounts that are classified as having high credit risk do not have high credit risk. No matter the model used, all loans given will go to accounts with low credit risk, yet many low credit risk accounts will be denied access to loans. 
 
-ROS
-                 pre       rec       spe        f1       geo       iba       sup
-
-  high_risk       0.01      0.74      0.61      0.02      0.67      0.46       101
-   low_risk       1.00      0.61      0.74      0.75      0.67      0.44     17104
-
-avg / total       0.99      0.61      0.74      0.75      0.67      0.44     17205
-
-
-SMOTE
-                 pre       rec       spe        f1       geo       iba       sup
-
-  high_risk       0.01      0.63      0.69      0.02      0.66      0.44       101
-   low_risk       1.00      0.69      0.63      0.82      0.66      0.44     17104
-
-avg / total       0.99      0.69      0.63      0.81      0.66      0.44     17205
-
-
-
-low precision = large number of false positives 
-Recall is the ability of the classifier to find all the positive samples. A low recall is indicative of a large number of false negatives
+Our biggest concern with these models is the high number of accounts with low credit risk that will be denied loans. Therefore, we would want to use a model with high recall scores for low credit risk which would indicate that most accounts being denied loans have high credit risk and should be denied loans. The model with the highest recall score for low credit risk is Model #6 with a recall score of 0.94. This means that 94% of accounts who have low credit risk were correctly assigned to having low credit risk.  
